@@ -14,7 +14,19 @@ namespace BlaisePascal.Esempio.Domain
 
         
         public string LicencePlate { get; private set; }
-        public int OdometerKm { get; private set; }
+        public int OdometerKm 
+        {
+           get
+            { return _odometerKm; }
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Odometer value cannot be negative.");
+                }
+                _odometerKm = value;
+            }
+        }
         public double DailyRate { get; private set; }
         public double FuelLevelPercentage { get; private set; }
 
