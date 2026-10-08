@@ -27,7 +27,19 @@ namespace BlaisePascal.Esempio.Domain
                 _odometerKm = value;
             }
         }
-        public double DailyRate { get; private set; }
+        public double DailyRate
+        {
+            get
+            { return _dailyRate; }
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Daily rate cannot be negative.");
+                }
+                _dailyRate = value;
+            }
+        }
         public double FuelLevelPercentage { get; private set; }
 
 
